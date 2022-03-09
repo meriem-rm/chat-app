@@ -1,12 +1,22 @@
 import 'package:chat_application/app/pages/chat_room.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import 'app/pages/home_screen.dart';
+import 'app/utils/message_api.dart';
 import 'app_theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<MessagesProvider>(
+            create: (_) => MessagesProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

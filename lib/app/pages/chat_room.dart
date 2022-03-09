@@ -1,10 +1,11 @@
 import 'package:chat_application/app/components/custom-appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../app_theme.dart';
 import '../components/chat_composer.dart';
 import '../components/conversation.dart';
-import '../utils/chat_api.dart';
+import '../utils/message_api.dart';
 
 class ChatRoom extends StatefulWidget {
   const ChatRoom({Key? key}) : super(key: key);
@@ -48,6 +49,18 @@ class _ChatRoomState extends State<ChatRoom> {
         ),
         height: 90,
         color: Colors.white,
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  context.read<MessagesProvider>().getmessages();
+                });
+              },
+              icon: Icon(
+                Icons.refresh,
+                color: MyTheme.kAccentColor,
+              ))
+        ],
       ),
       body: GestureDetector(
         onTap: () {
@@ -86,7 +99,9 @@ class _ChatRoomState extends State<ChatRoom> {
                       return;
                     } else {
                       _formKey.currentState!.save();
-                      await addEmployee(messageText);
+                      await Provider.of<MessagesProvider>(context,
+                              listen: false)
+                          .addMessage(messageText);
                       clearText();
                     }
                   }),

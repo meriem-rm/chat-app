@@ -15,16 +15,3 @@ class Message {
         message: json["message"]);
   }
 }
-
-// final List<Message> allMessages = [
-//   Message(id: 1, message: "hello  .."),
-//   Message(id: 2, message: "hey, how are you ??"),
-//   Message(id: 3, message: "i am good what about you"),
-//   Message(id: 5, message: "i am great :)"),
-//   Message(id: 1, message: "hello  .."),
-//   Message(id: 4, message: "hey, how are you ??"),
-//   Message(id: 1, message: "i am good what about you"),
-//   Message(id: 6, message: "i am great :)"),
-//   Message(id: 1, message: "hello  .."),
-//   Message(id: 2, message: "hey, how are you ??"),
-// ];
